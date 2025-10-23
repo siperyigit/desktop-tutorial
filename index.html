@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Klinik Sertifikası</title>
+    <title>Hizmetlerimiz - FizyoBalat</title>
     <style>
         * {
             margin: 0;
@@ -12,210 +12,176 @@
         }
 
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: 'Georgia', serif;
-            padding: 20px;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
 
-        .certificate {
-            width: 100%;
-            max-width: 700px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            padding: 60px 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 3px solid #d4af37;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .certificate::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, #d4af37 0%, #f0e68c 50%, #d4af37 100%);
-        }
-
-        .certificate::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: linear-gradient(90deg, #d4af37 0%, #f0e68c 50%, #d4af37 100%);
-        }
-
-        .clinic-image {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .clinic-image img {
-            max-width: 150px;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #d4af37;
-            padding-bottom: 15px;
+            margin-bottom: 60px;
+            color: white;
         }
 
         .header h1 {
-            font-size: 28px;
-            color: #333;
-            font-weight: 600;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 13px;
-            color: #666;
-            font-style: italic;
-        }
-
-        .service-code {
-            text-align: center;
-            margin: 20px 0;
-            padding: 12px;
-            background: rgba(212, 175, 55, 0.1);
-            border-radius: 8px;
-            border: 2px dashed #d4af37;
-        }
-
-        .service-code .label {
-            font-size: 11px;
-            color: #999;
-            text-transform: uppercase;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
-        .service-code .code {
-            font-size: 24px;
-            font-weight: bold;
-            color: #667eea;
-            font-family: 'Courier New', monospace;
-            margin-top: 5px;
-        }
-
-        .content {
-            margin: 30px 0;
-            line-height: 2;
-        }
-
-        .info-item {
-            display: flex;
-            margin-bottom: 18px;
-            align-items: flex-start;
-        }
-
-        .info-label {
-            font-weight: 600;
-            color: #333;
-            min-width: 180px;
-            font-size: 14px;
-        }
-
-        .info-value {
-            color: #555;
-            font-size: 14px;
-            flex: 1;
-            border-bottom: 1px dotted #d4af37;
-            padding-bottom: 5px;
-        }
-
-        .contact-section {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 2px solid #d4af37;
-            text-align: center;
-        }
-
-        .contact-text {
-            font-size: 12px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .contact-phone {
+        .header p {
             font-size: 18px;
-            font-weight: bold;
-            color: #667eea;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 2px;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
-        .seal {
-            text-align: center;
-            margin-top: 30px;
-            opacity: 0.3;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .seal-circle {
-            width: 80px;
-            height: 80px;
-            border: 3px solid #d4af37;
-            border-radius: 50%;
-            margin: 0 auto;
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            color: #d4af37;
+            color: white;
+            font-size: 14px;
             text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .service-content h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .service-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .service-icon {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="certificate">
-        <div class="clinic-image">
-            <img src= "https://s3-eu-west-1.amazonaws.com/doktortakvimi.com/doctor/cf5e8f/cf5e8f44195614d9920cd105db389fd8_large.jpg"
+    <div class="container">
         <div class="header">
-            <h1>FİZYOTERAPİ KLİNİĞİ</h1>
-            <p>Resmi Sertifikası</p>
+            <h1>HİZMETLERİMİZ</h1>
+            <p>FizyoBalat Fizyoterapi Kliniği olarak sunduğumuz tüm hizmetler</p>
         </div>
 
-        <div class="service-code">
-            <div class="label">Hizmet Birimi Kodu</div>
-            <div class="code">FB-992422869</div>
-        </div>
-
-        <div class="content">
-            <p style="text-align: center; font-size: 13px; color: #666; margin-bottom: 25px;">
-                Bu klinik, <strong>Fizyobalat Sağlık Hizmetleri A.Ş.'nin</strong> idari desteğiyle faaliyet göstermektedir.
-            </p>
-
-            <div class="info-item">
-                <span class="info-label">Ruhsatlı Fizyoterapist:</span>
-                <span class="info-value">Fzt. Özlem Yiğit</span>
+        <div class="services-grid">
+            <!-- Klinik Pilates -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer)2.JPG/:/rs=w:744,h:500,cg:true,m/cr=w:744,h:500" alt="Klinik Pilates">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">🏋️</div>
+                    <h2>Klinik Pilates</h2>
+                    <p>Profesyonel fizyoterapistlerin rehberliğinde, klinik ortamında özel olarak tasarlanmış pilates egzersizleri.</p>
+                </div>
             </div>
 
-            <div class="info-item">
-                <span class="info-label">Adres:</span>
-                <span class="info-value">AHMET YESEVİ MH. HASAT SK. AKARSU PLAZA 6.KAT D:56 , NİLÜFER/BURSA, Türkiye</span>
+            <!-- Hamile Pilates -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer)_Hamile.JPG/:/cr=t:3.39%25,l:0%25,w:100%25,h:64.94%25/rs=w:600,h:300,cg:true" alt="Hamile Pilates">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">🤰</div>
+                    <h2>Hamile Pilates</h2>
+                    <p>Hamile kadınlar için güvenli ve etkili pilates programı. Kas gücü ve esnekliği geliştirirken rahat kalmayı sağlar.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="contact-section">
-            <div class="contact-text">BİZE ULAŞIN:</div>
-            <div class="contact-phone">0 (530) 434 3208</div>
-        </div>
+            <!-- Reformer Pilates -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer).JPG/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" alt="Reformer Pilates">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">⚙️</div>
+                    <h2>Reformer Pilates</h2>
+                    <p>Reformer makinesi ile yapılan ileri pilates egzersizleri. Direnç ve esneklik çalışmaları için ideal.</p>
+                </div>
+            </div>
 
-        <div class="seal">
-            <div class="seal-circle">ONAYLANDI</div>
+            <!-- İleri Yaş Pilates -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Herya%C5%9F%20i%C3%A7in%20pilates.JPG/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" alt="İleri Yaş Pilates">
+                </div>
+                <div class="service-content">
+                    <div class="service-icon">👴</div>
+                    <h2>İleri Yaş Pilates</h2>
+                    <p>Yaşlı bireyler için özel olarak hazırlanmış, güvenli ve etkili pilates programı. Denge ve kuvvet geliştirmeye yardımcı.</p>
+                </div>
+            </div>
         </div>
     </div>
 </body>
