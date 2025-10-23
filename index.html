@@ -74,6 +74,8 @@
             border: 2px solid transparent;
             animation: fadeInUp 0.6s ease forwards;
             opacity: 0;
+            cursor: pointer;
+            position: relative;
         }
 
         @keyframes fadeInUp {
@@ -92,7 +94,8 @@
         .service-card:nth-child(3) { animation-delay: 0.3s; }
         .service-card:nth-child(4) { animation-delay: 0.4s; }
 
-        .service-card:hover {
+        .service-card:hover,
+        .service-card.active {
             transform: translateY(-12px);
             box-shadow: 0 20px 40px rgba(102, 126, 234, 0.25);
             border-color: #667eea;
@@ -117,7 +120,8 @@
             transition: background 0.3s ease;
         }
 
-        .service-card:hover .service-image::after {
+        .service-card:hover .service-image::after,
+        .service-card.active .service-image::after {
             background: rgba(0, 0, 0, 0.15);
         }
 
@@ -128,12 +132,21 @@
             transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .service-card:hover .service-image img {
+        .service-card:hover .service-image img,
+        .service-card.active .service-image img {
             transform: scale(1.1);
         }
 
         .service-content {
             padding: 28px 24px;
+            transition: all 0.3s ease;
+            max-height: 200px;
+            overflow: hidden;
+        }
+
+        .service-card.active .service-content {
+            max-height: none;
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0e6ff 100%);
         }
 
         .service-header {
@@ -149,7 +162,8 @@
             transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .service-card:hover .service-icon {
+        .service-card:hover .service-icon,
+        .service-card.active .service-icon {
             transform: scale(1.15) rotate(5deg);
         }
 
@@ -160,7 +174,8 @@
             transition: color 0.3s ease;
         }
 
-        .service-card:hover h2 {
+        .service-card:hover h2,
+        .service-card.active h2 {
             color: #667eea;
         }
 
@@ -169,10 +184,50 @@
             color: #718096;
             line-height: 1.7;
             transition: color 0.3s ease;
+            display: none;
         }
 
-        .service-card:hover p {
+        .service-card.active p {
+            display: block;
+            animation: fadeIn 0.3s ease 0.1s forwards;
             color: #4a5568;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            display: none;
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .close-btn:hover {
+            background: #f0f0f0;
+            transform: rotate(90deg);
+        }
+
+        .service-card.active .close-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Desktop - 4 columns */
@@ -183,6 +238,27 @@
 
             .service-image {
                 height: 240px;
+            }
+
+            .service-card.active {
+                grid-column: span 2;
+                grid-row: span 2;
+                max-height: 600px;
+            }
+
+            .service-card.active .service-content {
+                max-height: none;
+                padding: 40px;
+            }
+
+            .service-card.active h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .service-card.active p {
+                font-size: 16px;
+                line-height: 1.8;
             }
         }
 
@@ -198,6 +274,24 @@
 
             .header h1 {
                 font-size: 40px;
+            }
+
+            .service-card.active {
+                grid-column: span 2;
+                max-height: 500px;
+            }
+
+            .service-card.active .service-content {
+                max-height: none;
+                padding: 32px;
+            }
+
+            .service-card.active h2 {
+                font-size: 24px;
+            }
+
+            .service-card.active p {
+                font-size: 15px;
             }
         }
 
@@ -240,6 +334,7 @@
 
             .service-content {
                 padding: 20px 16px;
+                max-height: 120px;
             }
 
             .service-header {
@@ -263,6 +358,24 @@
             .service-card:hover {
                 transform: translateY(-8px);
                 box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            }
+
+            .service-card.active {
+                transform: translateY(-8px);
+            }
+
+            .service-card.active .service-content {
+                max-height: none;
+                padding: 20px 16px;
+            }
+
+            .service-card.active h2 {
+                font-size: 20px;
+                margin-bottom: 12px;
+            }
+
+            .service-card.active p {
+                font-size: 14px;
             }
         }
 
@@ -290,6 +403,7 @@
 
             .service-content {
                 padding: 16px 12px;
+                max-height: 100px;
             }
 
             .service-icon {
@@ -302,6 +416,14 @@
 
             .service-content p {
                 font-size: 12px;
+            }
+
+            .close-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 18px;
+                top: 10px;
+                right: 10px;
             }
         }
     </style>
@@ -316,6 +438,7 @@
         <div class="services-grid">
             <!-- Klinik Pilates -->
             <div class="service-card">
+                <button class="close-btn">✕</button>
                 <div class="service-image">
                     <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer)2.JPG/:/rs=w:744,h:500,cg:true,m/cr=w:744,h:500" alt="Klinik Pilates">
                 </div>
@@ -324,12 +447,13 @@
                         <span class="service-icon">💪</span>
                         <h2>Klinik Pilates</h2>
                     </div>
-                    <p>Fizyoterapistlerin rehberliğinde yapılan, vücudu güçlendiren ve esnekliği arttıran pilates egzersizleri.</p>
+                    <p>Fizyoterapistlerin rehberliğinde yapılan, vücudu güçlendiren ve esnekliği arttıran pilates egzersizleri. Klinik Pilates programımız, her seviyeye uygun olacak şekilde tasarlanmıştır. Profesyonel eğitmenlerin gözetiminde, kişisel ihtiyaçlara göre özelleştirilmiş hareket terapileri yapılır. Postür düzeltme, ağrı giderme ve genel fiziksel gelişim için ideal bir yöntemdir.</p>
                 </div>
             </div>
 
             <!-- Hamile Pilates -->
             <div class="service-card">
+                <button class="close-btn">✕</button>
                 <div class="service-image">
                     <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer)_Hamile.JPG/:/cr=t:3.39%25,l:0%25,w:100%25,h:64.94%25/rs=w:600,h:300,cg:true" alt="Hamile Pilates">
                 </div>
@@ -338,12 +462,13 @@
                         <span class="service-icon">🤰</span>
                         <h2>Hamile Pilates</h2>
                     </div>
-                    <p>Hamile kadınlar için güvenli olacak şekilde tasarlanan, konforlu ve faydalı pilates programı.</p>
+                    <p>Hamile kadınlar için güvenli olacak şekilde tasarlanan, konforlu ve faydalı pilates programı. Hamile Pilates, gebelik döneminde kasları güçlendirmek ve esnekliği korumak için özel olarak hazırlanmıştır. Doğum öncesi ve sonrası rehabilitasyonda yardımcı, rahatsızlıkları azaltıcı egzersizler içerir. Deneyimli fizyoterapistler tarafından güvenle uygulanır.</p>
                 </div>
             </div>
 
             <!-- Reformer Pilates -->
             <div class="service-card">
+                <button class="close-btn">✕</button>
                 <div class="service-image">
                     <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Aletli%20Pilates%20(Reformer).JPG/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" alt="Reformer Pilates">
                 </div>
@@ -352,12 +477,13 @@
                         <span class="service-icon">⚙️</span>
                         <h2>Reformer Pilates</h2>
                     </div>
-                    <p>Modern reformer makinesi ile yapılan, kas kuvvetini ve esnekliği geliştiren ileri pilates çalışmaları.</p>
+                    <p>Modern reformer makinesi ile yapılan ileri pilates egzersizleri. Direnç ve esneklik çalışmaları için ideal. Reformer Pilates, vücudun derinlemesine kas gruplarına çalışmayı sağlar. Ayarlanabilir direnç seviyeleri sayesinde başlangıçtan ileri seviyelere kadar herkes için uygundur. Spor performansını artırır ve yaralanmaları önler.</p>
                 </div>
             </div>
 
             <!-- İleri Yaş Pilates -->
             <div class="service-card">
+                <button class="close-btn">✕</button>
                 <div class="service-image">
                     <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/Herya%C5%9F%20i%C3%A7in%20pilates.JPG/:/rs=w:600,h:300,cg:true,m/cr=w:600,h:300" alt="İleri Yaş Pilates">
                 </div>
@@ -366,10 +492,46 @@
                         <span class="service-icon">👴</span>
                         <h2>İleri Yaş Pilates</h2>
                     </div>
-                    <p>Yaşlı bireyler için uygun, denge geliştiren ve kuvvet kazandıran güvenli pilates programı.</p>
+                    <p>Yaşlı bireyler için uygun, denge geliştiren ve kuvvet kazandıran güvenli pilates programı. İleri yaş pilates, kemik yoğunluğunu korur ve düşme riskini azaltır. Eklem hareketliliğini iyileştirir ve yaşam kalitesini arttırır. Yumuşak hareketler ve güvenlik odaklı yaklaşım ile tüm yaşlı bireyler için uygulanabilir.</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const cards = document.querySelectorAll('.service-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                // Tıklanan kapalı düğme değilse
+                if (!e.target.closest('.close-btn')) {
+                    // Diğer kartları kapat
+                    cards.forEach(c => {
+                        if (c !== card) {
+                            c.classList.remove('active');
+                        }
+                    });
+                    // Tıklanan kartı aç/kapat
+                    card.classList.toggle('active');
+                }
+            });
+
+            // Kapalı düğmesi
+            const closeBtn = card.querySelector('.close-btn');
+            closeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                card.classList.remove('active');
+            });
+        });
+
+        // Sayfaya tıklayınca kapalı kartları kapat
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.service-card')) {
+                cards.forEach(card => {
+                    card.classList.remove('active');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
