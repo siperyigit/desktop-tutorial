@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -63,21 +62,6 @@
             max-width: 150px;
             height: auto;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
-        }
-
-        .placeholder-image {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-            text-align: center;
             box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
         }
 
@@ -198,9 +182,7 @@
 <body>
     <div class="certificate">
         <div class="clinic-image">
-            <div class="placeholder-image">
-                [Klinik Logosu]
-            </div>
+            <img src="https://img1.wsimg.com/isteam/ip/53effac4-c14e-4e37-865e-9bffc4eed4f1/FizyoBalat%20logo-01.png/:/rs=w:356,h:200,cg:true,m/cr=w:356,h:200/qt=q:95" alt="FizyoBalat Logo">
         </div>
 
         <div class="header">
@@ -210,7 +192,7 @@
 
         <div class="service-code">
             <div class="label">Hizmet Birimi Kodu</div>
-            <div class="code" id="serviceCode">FB-000001</div>
+            <div class="code">FB-992422869</div>
         </div>
 
         <div class="content">
@@ -225,31 +207,18 @@
 
             <div class="info-item">
                 <span class="info-label">Adres:</span>
-                <span class="info-value">FizyoBalat
-
-AKARSU PLAZA 6.KAT D:56 (BALAT TAN OKULLARI ALTI) , AHMET YESEVİ MH. HASAT SK. Nilüfer/Bursa, Türkiye TEL: 0 (530) 434 3208</span>
+                <span class="info-value">AKARSU PLAZA 6.KAT D:56 (BALAT TAN OKULLARI ALTI) , AHMET YESEVİ MH. HASAT SK. Nilüfer/Bursa, Türkiye</span>
             </div>
         </div>
 
         <div class="contact-section">
             <div class="contact-text">Bir yanlışlık veya öneriniz varsa, bize ulaşın:</div>
-            <div class="contact-phone"> 0 (530) 434 3208 </div>
+            <div class="contact-phone">0 (530) 434 3208</div>
         </div>
 
         <div class="seal">
             <div class="seal-circle">ONAYLANDI</div>
         </div>
     </div>
-
-    <script>
-        // Unique kod oluşturma
-        function generateUniqueCode() {
-            const timestamp = Date.now().toString().slice(-6);
-            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-            return `FB-${timestamp}${random}`;
-        }
-
-        document.getElementById('serviceCode').textContent = generateUniqueCode();
-    </script>
 </body>
 </html>
