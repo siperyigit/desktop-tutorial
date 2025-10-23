@@ -1,0 +1,253 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik Sertifikası</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Georgia', serif;
+            padding: 20px;
+        }
+
+        .certificate {
+            width: 100%;
+            max-width: 700px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 60px 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 3px solid #d4af37;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #d4af37 0%, #f0e68c 50%, #d4af37 100%);
+        }
+
+        .certificate::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #d4af37 0%, #f0e68c 50%, #d4af37 100%);
+        }
+
+        .clinic-image {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .clinic-image img {
+            max-width: 150px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .placeholder-image {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            color: #333;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .service-code {
+            text-align: center;
+            margin: 20px 0;
+            padding: 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 8px;
+            border: 2px dashed #d4af37;
+        }
+
+        .service-code .label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-code .code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            margin-top: 5px;
+        }
+
+        .content {
+            margin: 30px 0;
+            line-height: 2;
+        }
+
+        .info-item {
+            display: flex;
+            margin-bottom: 18px;
+            align-items: flex-start;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #333;
+            min-width: 180px;
+            font-size: 14px;
+        }
+
+        .info-value {
+            color: #555;
+            font-size: 14px;
+            flex: 1;
+            border-bottom: 1px dotted #d4af37;
+            padding-bottom: 5px;
+        }
+
+        .contact-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #d4af37;
+            text-align: center;
+        }
+
+        .contact-text {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .contact-phone {
+            font-size: 18px;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .seal {
+            text-align: center;
+            margin-top: 30px;
+            opacity: 0.3;
+        }
+
+        .seal-circle {
+            width: 80px;
+            height: 80px;
+            border: 3px solid #d4af37;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: #d4af37;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate">
+        <div class="clinic-image">
+            <div class="placeholder-image">
+                [Klinik Logosu]
+            </div>
+        </div>
+
+        <div class="header">
+            <h1>FİZYOTERAPİ KLİNİĞİ</h1>
+            <p>Resmi Sertifikası</p>
+        </div>
+
+        <div class="service-code">
+            <div class="label">Hizmet Birimi Kodu</div>
+            <div class="code" id="serviceCode">FB-000001</div>
+        </div>
+
+        <div class="content">
+            <p style="text-align: center; font-size: 13px; color: #666; margin-bottom: 25px;">
+                Bu klinik, <strong>Fizyobalat Sağlık Hizmetleri A.Ş.'nin</strong> idari desteğiyle faaliyet göstermektedir.
+            </p>
+
+            <div class="info-item">
+                <span class="info-label">Ruhsatlı Fizyoterapist:</span>
+                <span class="info-value">[Ad Soyad]</span>
+            </div>
+
+            <div class="info-item">
+                <span class="info-label">Adres:</span>
+                <span class="info-value">[Kliniğin olduğu Adres]</span>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <div class="contact-text">Bir yanlışlık veya öneriniz varsa, bize ulaşın:</div>
+            <div class="contact-phone">0 538 607 xx xx</div>
+        </div>
+
+        <div class="seal">
+            <div class="seal-circle">ONAYLANDI</div>
+        </div>
+    </div>
+
+    <script>
+        // Unique kod oluşturma
+        function generateUniqueCode() {
+            const timestamp = Date.now().toString().slice(-6);
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return `FB-${timestamp}${random}`;
+        }
+
+        document.getElementById('serviceCode').textContent = generateUniqueCode();
+    </script>
+</body>
+</html>
